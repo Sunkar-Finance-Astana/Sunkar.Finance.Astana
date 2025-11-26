@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUNKAR FINANCE — Финансовый консалтинг №1 в Казахстане</title>
+
+<style>
+
+/* 🔥 Стиль — Premium Dark Kazakhstan */
+body{
+    margin:0;
+    font-family: "Montserrat", sans-serif;
+    background:#0A1C2A;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* золотой */
+:root{
+    --gold:#C9A44B;
+    --blue:#0A1C2A;
+    --light:#EAD9A1;
+}
+
+/* HEADER */
+header{
+    background:rgba(0,0,0,0.4);
+    padding:30px 6%;
+    display:flex;align-items:center;justify-content:space-between;
+    backdrop-filter:blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+header img.logo{height:85px;}
+
+nav a{
+    margin:0 15px;
+    color:white;text-decoration:none;font-size:18px;
+}
+nav a:hover{color:var(--gold);}
+
+/* HERO */
+.hero{
+    padding:120px 6%;
+    background:url('img/ornament-bg.png') center/cover no-repeat fixed;
+    text-align:center;
+}
+.hero h1{
+    font-size:44px;font-weight:700;
+    color:var(--gold);letter-spacing:1px;
+}
+.hero p{font-size:22px;margin-top:10px;color:white;opacity:.9;}
+
+.btn{
+    padding:15px 28px;
+    border-radius:6px;
+    font-size:18px;text-decoration:none;
+    display:inline-block;cursor:pointer;font-weight:600;
+    transition:.25s;
+}
+.btn-gold{background:var(--gold);color:#0A1C2A;}
+.btn-gold:hover{background:#E8C979;}
+
+.btn-dark{border:2px solid var(--gold);color:var(--gold);}
+.btn-dark:hover{background:var(--gold);color:#0A1C2A;}
+
+/* USLUGI */
+.section{
+    padding:100px 6%;
+}
+.section h2{
+    font-size:36px;font-weight:700;text-align:center;color:var(--gold);
+    margin-bottom:45px;
+}
+.grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+.card{
+    background:rgba(255,255,255,.05);
+    padding:25px;border-radius:10px;
+    border:1px solid rgba(255,255,255,.1);
+}
+.card h3{color:var(--gold);margin:0 0 15px;}
+.card li{margin-bottom:7px;font-size:16px;opacity:.9;}
+.card a{margin-top:18px;}
+
+/* Партнеры */
+.partners img{height:80px;margin:20px;opacity:.85;}
+.partners img:hover{opacity:1;}
+
+/* REVIEWS */
+.review{background:rgba(255,255,255,.05);padding:20px;border-radius:10px;border:1px solid rgba(255,255,255,.1);}
+
+/* MAP + CONTACTS */
+.contacts{
+    text-align:center;
+    padding-bottom:140px;
+}
+.contacts img{
+    width:80%;max-width:800px;border-radius:12px;border:2px solid var(--gold);
+    margin-bottom:30px;
+}
+.social img{
+    height:60px;margin:0 12px;transition:.3s;
+}
+.social img:hover{transform:scale(1.15);}
+
+/* FOOTER */
+footer{
+    text-align:center;padding:25px 0;color:#aaa;
+    border-top:1px solid rgba(255,255,255,.08);
+    margin-top:60px;
+}
+
+/* MODAL CALCULATOR */
+.modal{
+    display:none;position:fixed;inset:0;z-index:999;
+    background:rgba(0,0,0,.85);
+    justify-content:center;align-items:center;
+}
+.modal-box{
+    background:#112637;color:white;padding:35px;border-radius:12px;
+    width:90%;max-width:450px;border:1px solid var(--gold);
+}
+.modal-box h2{text-align:center;color:var(--gold);}
+input,select{
+    width:100%;padding:12px;margin-top:10px;background:#0A1C2A;
+    border:1px solid var(--gold);border-radius:6px;color:white;
+}
+.calc-btn{background:var(--gold);color:#0A1C2A;width:100%;margin-top:20px;}
+.close{float:right;color:white;font-size:24px;cursor:pointer;}
+
+.result{text-align:center;margin-top:20px;display:none;}
+.percent{
+    font-size:46px;font-weight:bold;color:var(--gold);
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <img src="img/logo.png" class="logo">
+    <nav>
+        <a href="#services">Услуги</a>
+        <a href="#calc">Рассчитать шанс</a>
+        <a href="#contacts">Контакты</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>SUNKAR FINANCE — Финансовый консалтинг №1 в Казахстане</h1>
+    <p>Кредиты • Ипотека • Бизнес-финансирование • Рефинанс</p>
+    <div style="margin-top:35px;">
+        <a onclick="openCalc()" class="btn btn-gold">Узнать шанс одобрения</a>
+        <a href="https://wa.me/77756401892" target="_blank" class="btn btn-dark">Написать специалисту</a>
+    </div>
+</section>
+
+<section id="services" class="section">
+<h2>Наши услуги</h2>
+<div class="grid">
+
+<div class="card">
+<h3>Кредиты без залога</h3>
+<ul>
+<li>до 20 млн тг с подтверждением</li>
+<li>до 10 млн тг без подтверждения</li>
+<li>одобрение даже с КИ проблемами</li>
+</ul>
+<a onclick="openCalc()" class="btn btn-dark">Рассчитать шанс</a>
+</div>
+
+<div class="card">
+<h3>Кредиты под залог</h3>
+<ul>
+<li>до 80 млн</li><li>недвижимость / авто</li>
+<li>быстрое решение</li>
+</ul>
+<a onclick="openCalc()" class="btn btn-dark">Оформить</a>
+</div>
+
+<div class="card">
+<h3>Автокредит</h3>
+<ul>
+<li>новые и б/у авто</li><li>без ПВ</li>
+<li>партнёры дилеры</li>
+</ul>
+<a onclick="openCalc()" class="btn btn-dark">Получить предложение</a>
+</div>
+
+<div class="card">
+<h3>Ипотека</h3>
+<ul>
+<li>первичка / вторичка</li>
+<li>гос программы</li>
+<li>подбор банков</li>
+</ul>
+<a onclick="openCalc()" class="btn btn-dark">Рассчитать</a>
+</div>
+
+<div class="card">
+<h3>Рефинансирование</h3>
+<ul>
+<li>снижение платежа</li>
+<li>объединение кредитов</li>
+<li>улучшение условий</li>
+</ul>
+<a onclick="openCalc()" class="btn btn-dark">Рассчитать</a>
+</div>
+
+<div class="card">
+<h3>ИП / ТОО</h3>
+<ul>
+<li>до 200 млн тг</li><li>быстрое решение</li>
+<li>сопровождение под ключ</li>
+</ul>
+<a onclick="openCalc()" class="btn btn-dark">Оформить</a>
+</div>
+
+</div>
+</section>
+
+
+<section class="section partners">
+<h2>Партнёры</h2>
+<img src="img/partner-solva.png">
+<img src="img/partner-dossym.png">
+<img src="img/partner-jetcar.png">
+</section>
+
+
+<section id="contacts" class="contacts section">
+<h2>Работаем по всему Казахстану</h2>
+<img src="img/map.png">
+<div class="social">
+<a href="https://instagram.com/sunkar.finance.astana"><img src="img/instagram.png"></a>
+<a href="https://tiktok.com/@sunkar.finance.astana"><img src="img/tiktok.png"></a>
+<a href="https://2gis.kz/astana/geo/70000001105774380"><img src="img/2gis.png"></a>
+<a href="https://wa.me/77756401892"><img src="img/whatsapp.png"></a>
+</div>
+</section>
+
+
+<footer>
+© SUNKAR FINANCE • 2025
+</footer>
+
+
+<!-- CALCULATOR -->
+<div id="calcModal" class="modal">
+    <div class="modal-box">
+        <span class="close" onclick="closeCalc()">×</span>
+        <h2>Рассчитаем шансы одобрения за 1 минуту</h2>
+
+        <input id="name" placeholder="Имя">
+        <input id="city" placeholder="Город">
+        <input id="sum" type="number" placeholder="Необходимая сумма в тг">
+
+        <select id="type">
+            <option value="">Тип услуги</option>
+            <option>Кредит без залога</option>
+            <option>Кредит под залог</option>
+            <option>Авто</option>
+            <option>Ипотека</option>
+            <option>Рефинанс</option>
+            <option>Для ИП/ТОО</option>
+        </select>
+
+        <button class="btn calc-btn" onclick="calc()">Рассчитать</button>
+
+        <div id="result" class="result">
+            <div class="percent" id="percent">0%</div>
+            <div style="margin-top:18px;">Ваш шанс предварительного одобрения</div>
+            <a id="wa" target="_blank" class="btn btn-gold" style="margin-top:18px;display:block;">Отправить заявку</a>
+        </div>
+    </div>
+</div>
+
+<script>
+function openCalc(){document.getElementById("calcModal").style.display="flex";}
+function closeCalc(){document.getElementById("calcModal").style.display="none";}
+
+function calc(){
+    let p = Math.floor(70 + Math.random()*25); // 70-95%
+    document.getElementById("percent").innerText = p+"%";
+    document.getElementById("result").style.display="block";
+
+    let n=document.getElementById("name").value,
+        c=document.getElementById("city").value,
+        s=document.getElementById("sum").value,
+        t=document.getElementById("type").value;
+
+    document.getElementById("wa").href=
+    "https://wa.me/77756401892?text="+
+    encodeURIComponent(
+        "Заявка с сайта Sunkar Finance\n"+
+        "Имя: "+n+"\nГород: "+c+"\nСумма: "+s+" тг\nУслуга: "+t+"\nШанс одобрения: "+p+"%"
+    );
+}
+</script>
+
+</body>
+</html>
