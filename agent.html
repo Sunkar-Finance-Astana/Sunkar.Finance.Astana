@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Станьте агентом — Sunkar Finance</title>
+  <meta name="description" content="Зарегистрируйтесь агентом Sunkar Finance. Приводите клиентов — получайте комиссию." />
+  <style>
+    body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,#041018,#07121B);color:#fff}
+    .wrap{max-width:900px;margin:26px auto;padding:18px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    h1{color:#D4A24A}
+    label{display:block;color:rgba(255,255,255,0.85);margin-top:10px;margin-bottom:6px}
+    input,select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff}
+    .btn{display:inline-block;margin-top:12px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,#D4A24A,#c89234);color:#081018;font-weight:700;text-decoration:none}
+    .note{color:rgba(255,255,255,0.7);font-size:13px;margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+      <a href="index.html" style="color:var(--muted);text-decoration:none">← На главную</a>
+    </div>
+
+    <div class="card">
+      <h1>Станьте агентом Sunkar Finance</h1>
+      <p class="note">Заполните форму — мы свяжемся с вами и подключим к агентской сети.</p>
+
+      <form id="agentForm" onsubmit="return false">
+        <label>ФИО *</label>
+        <input id="agentName" type="text" placeholder="Иванов Иван" required>
+
+        <label>Город *</label>
+        <input id="agentCity" type="text" placeholder="Астана" required>
+
+        <label>Телефон *</label>
+        <input id="agentPhone" type="tel" placeholder="+7 7xx xxx xx xx" required>
+
+        <label>Комментарий (необязательно)</label>
+        <textarea id="agentNote" rows="4" placeholder="Коротко о ваших клиентах или опыте"></textarea>
+
+        <a class="btn" id="sendAgentBtn">Отправить заявку в WhatsApp</a>
+
+        <div class="note">После отправки мы свяжемся с вами для подключения и подробных условий.</div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // WhatsApp number (тот же, что везде)
+    const WA = '77756401892'; // полный формат без +, согласно wa.me
+
+    function encodeT(text){ return encodeURIComponent(text).replace(/%20/g,' '); }
+
+    document.getElementById('sendAgentBtn').addEventListener('click', ()=>{
+      const name = document.getElementById('agentName').value.trim() || 'Не указан';
+      const city = document.getElementById('agentCity').value.trim() || 'Не указан';
+      const phone = document.getElementById('agentPhone').value.trim() || '';
+      const note = document.getElementById('agentNote').value.trim() || '';
+
+      if(!phone){ alert('Укажите телефон'); return; }
+
+      // prepare text
+      const text = `Заявка%20на%20агента%20—%20Sunkar%20Finance%0A%0AФИО:%20${encodeURIComponent(name)}%0AГород:%20${encodeURIComponent(city)}%0AТелефон:%20${encodeURIComponent(phone)}%0AКомментарий:%20${encodeURIComponent(note)}`;
+      const url = `https://wa.me/${WA}?text=${text}`;
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+  </html>
