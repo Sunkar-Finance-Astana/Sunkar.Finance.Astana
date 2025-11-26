@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Станьте агентом — Sunkar Finance</title>
+  <meta name="description" content="Зарегистрируйтесь как агент Sunkar Finance. Приводите клиентов, получайте комиссию — подключение бесплатно.">
+  <meta property="og:image" content="img/logo.png">
+  <style>
+    :root{--bg:#04121a;--muted:rgba(255,255,255,0.78);--gold:#D4A24A}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Roboto;color:#fff;background:linear-gradient(180deg,var(--bg),#021016);-webkit-font-smoothing:antialiased}
+    .wrap{max-width:900px;margin:18px auto;padding:16px}
+    header{display:flex;align-items:center;gap:12px}
+    .logo{width:72px;height:72px;border-radius:12px;background:linear-gradient(135deg,#082b3a,#0b2630);display:flex;align-items:center;justify-content:center;padding:8px}
+    .logo img{width:100%;height:100%;object-fit:contain;border-radius:8px}
+    h1{color:var(--gold)}
+    p{color:var(--muted)}
+    .form{margin-top:16px;padding:14px;background:rgba(255,255,255,0.02);border-radius:12px}
+    label{display:block;color:var(--muted);margin-bottom:6px}
+    input{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff}
+    .row{margin-bottom:12px}
+    .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+    .btn.primary{background:linear-gradient(90deg,var(--gold),#c78e2f);color:#07121B}
+    .note{color:var(--muted);font-size:13px;margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo"><img src="img/logo.png" alt="logo"></div>
+      <div>
+        <h1>Станьте агентом Sunkar Finance</h1>
+        <p>Приводите клиентов — получайте комиссию от каждой закрытой сделки. Подключение бесплатное.</p>
+      </div>
+    </header>
+
+    <section class="form" aria-labelledby="formTitle">
+      <h2 id="formTitle" style="margin-top:0;color:var(--gold)">Форма регистрации агента</h2>
+
+      <div class="row">
+        <label for="agentName">ФИО *</label>
+        <input id="agentName" type="text" placeholder="Иванов Иван">
+      </div>
+
+      <div class="row">
+        <label for="agentCity">Город *</label>
+        <input id="agentCity" type="text" value="Астана">
+      </div>
+
+      <div class="row">
+        <label for="agentPhone">Телефон (WhatsApp) *</label>
+        <input id="agentPhone" type="tel" placeholder="+7 7xx xxx xxxx">
+      </div>
+
+      <div class="row">
+        <label for="agentNotes">Комментарий (опционально)</label>
+        <input id="agentNotes" type="text" placeholder="Например, регион, опыт">
+      </div>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="btn primary" id="sendAgent">Отправить заявку (WhatsApp)</button>
+        <button class="btn" id="resetBtn" style="background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)">Очистить</button>
+      </div>
+
+      <div class="note">После отправки мы свяжемся с вами в WhatsApp. Заявки приходят на +7 775 640 1892</div>
+    </section>
+
+    <section style="margin-top:18px">
+      <h3 style="color:var(--gold)">Как это работает</h3>
+      <ol style="color:var(--muted)">
+        <li>Заполнили форму → она уходит в WhatsApp нашей команды.</li>
+        <li>Мы связались и подключили вас к агентской сети.</li>
+        <li>Вы получаете материалы и шаблоны для привлечения клиентов.</li>
+      </ol>
+    </section>
+  </div>
+
+<script>
+  // quick client-side validation and whatsapp prefilled message
+  const WA = "https://wa.me/77756401892?text=";
+  document.getElementById('sendAgent').onclick = function(){
+    const name = encodeURIComponent(document.getElementById('agentName').value.trim() || "—");
+    const city = encodeURIComponent(document.getElementById('agentCity').value.trim() || "—");
+    const phone = encodeURIComponent(document.getElementById('agentPhone').value.trim() || "—");
+    const notes = encodeURIComponent(document.getElementById('agentNotes').value.trim() || "—");
+    if(!document.getElementById('agentName').value.trim() || !document.getElementById('agentPhone').value.trim()){
+      alert("Заполните, пожалуйста, ФИО и телефон.");
+      return;
+    }
+    const text = `Заявка%20агента%20Sunkar%20Finance%0A%0AФИО:%20${name}%0AГород:%20${city}%0AТелефон:%20${phone}%0AКомментарий:%20${notes}`;
+    window.location.href = WA + text;
+  };
+  document.getElementById('resetBtn').onclick = ()=>{ document.getElementById('agentName').value='';document.getElementById('agentCity').value='Астана';document.getElementById('agentPhone').value='';document.getElementById('agentNotes').value=''; };
+</script>
+</body>
+</html>
