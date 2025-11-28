@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Узнайте вероятность одобрения — Sunkar Finance</title>
+  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <script src="calc.js" defer></script>
+</head>
+<body>
+  <div class="page small">
+
+    <header class="topbar small">
+      <div class="brand">
+        <img src="img/logo.png" alt="" class="brand-logo">
+        <div class="brand-text">
+          <div class="company">Sunkar Finance</div>
+          <div class="tag">Узнайте вероятность одобрения</div>
+        </div>
+      </div>
+      <div class="top-controls">
+        <a href="index.html" class="lang">RU</a>
+        <a href="kz.html" class="lang">KZ</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1>Узнайте вероятность одобрения</h1>
+      <p class="lead">Заполните форму — мы сразу покажем примерный шанс одобрения и рекомендации.</p>
+
+      <form id="probForm" class="form-card">
+        <label>ФИО <input name="name" placeholder="Иванов Иван" required></label>
+
+        <label>Телефон <input name="phone" placeholder="+7 7xx xxx xx xx" required></label>
+
+        <label>Город
+          <select name="city">
+            <option>Астана</option>
+            <option>Алматы</option>
+            <option>Шымкент</option>
+            <option>Тараз</option>
+            <option>Другой</option>
+          </select>
+        </label>
+
+        <label>Услуга
+          <select id="service" name="service" required>
+            <option value="">Выберите</option>
+            <option value="consumer">Потребительский</option>
+            <option value="mortgage">Ипотека</option>
+            <option value="refinance">Рефинансирование</option>
+            <option value="car">Авто</option>
+          </select>
+        </label>
+
+        <label>Желаемая сумма (₸) <input name="sum" type="number" value="5000000"></label>
+
+        <label>Официальный доход в мес. (₸) <input name="income" type="number" value="200000"></label>
+
+        <label>Ежемесячные текущие платежи (₸) <input name="payments" type="number" value="0"></label>
+
+        <label>Есть активные просрочки?
+          <select name="delinq">
+            <option value="no">Нет</option>
+            <option value="yes_small">Да, небольшие</option>
+            <option value="yes_serious">Да, серьёзные</option>
+          </select>
+        </label>
+
+        <!-- mortgage extra fields shown via JS when service == mortgage -->
+        <div id="mortgageFields" style="display:none;">
+          <label>Тип рынка
+            <select name="mortgage_type">
+              <option value="primary">Первичный</option>
+              <option value="secondary">Вторичный</option>
+            </select>
+          </label>
+          <label>Первоначальный взнос (%) <input name="down" type="number" value="20"></label>
+        </div>
+
+        <label>Подтверждение дохода
+          <select name="income_proof">
+            <option value="yes">Да</option>
+            <option value="no">Нет</option>
+          </select>
+        </label>
+
+        <label>Тип занятости
+          <select name="employment">
+            <option value="salaried">Официальный</option>
+            <option value="self">Самозанятый/ИП</option>
+            <option value="pension">Пенсия</option>
+            <option value="other">Другое</option>
+          </select>
+        </label>
+
+        <div class="form-actions">
+          <button type="button" id="calcBtn" class="btn btn-gold">Рассчитать вероятность</button>
+          <button type="submit" class="btn btn-grey">Отправить заявку в WhatsApp</button>
+        </div>
+
+        <div id="result" class="result" aria-live="polite" style="display:none;"></div>
+      </form>
+    </main>
+
+  </div>
+</body>
+</html>
