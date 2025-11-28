@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Узнайте вероятность одобрения — Sunkar Finance</title>
+<meta name="description" content="Калькулятор предварительной вероятности одобрения кредита — Sunkar Finance.">
+<style>
+:root{--bg:#07121B;--gold:#D4A24A;--muted:rgba(255,255,255,0.78)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui, -apple-system, Helvetica, Arial;background:linear-gradient(180deg,#041018,#07121B);color:#fff}
+.container{max-width:900px;margin:18px auto;padding:16px}
+.header{display:flex;align-items:center;gap:12px}
+.logo img{width:64px;height:64px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+.form-grid{display:grid;grid-template-columns:1fr 320px;gap:12px}
+.form-row{margin-bottom:10px}
+label{display:block;color:var(--muted);margin-bottom:6px}
+input,select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--gold),#c38f3a);color:#07121B;font-weight:700;border:0;cursor:pointer}
+.result-box{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:10px;text-align:center;margin-top:8px}
+.percent{font-size:42px;color:var(--gold);font-weight:800}
+.note{color:var(--muted);font-size:13px;margin-top:8px}
+@media (max-width:900px){.form-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="logo"><img src="img/logo.png" alt="logo"></div>
+    <div>
+      <h2 id="mainTitle">Узнайте вероятность одобрения</h2>
+      <div id="mainSub" style="color:var(--muted)">Быстрая оценка — предварительная вероятность одобрения кредита</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <div class="form-grid">
+      <div>
+        <div class="form-row">
+          <label id="lblFIO">ФИО *</label>
+          <input id="fio" type="text" placeholder="Иванов Иван">
+        </div>
+        <div class="form-row">
+          <label id="lblPhone">Телефон *</label>
+          <input id="phone" type="tel" placeholder="+7 7xx xxx xx xx">
+        </div>
+        <div class="form-row">
+          <label id="lblCity">Город *</label>
+          <input id="city" type="text" value="Астана">
+        </div>
+
+        <div class="form-row">
+          <label id="lblService">Услуга *</label>
+          <select id="serviceType">
+            <option value="">Выберите</option>
+            <option value="unsecured_no_income">Кредит без залога (до 10 млн)</option>
+            <option value="unsecured_with_income">Кредит без залога (до 20 млн)</option>
+            <option value="secured">Кредит под залог</option>
+            <option value="mortgage">Ипотека</option>
+            <option value="business">Для ИП/ТОО</option>
+            <option value="auto">Автокредит</option>
+            <option value="refinance">Рефинансирование</option>
+          </select>
+        </div>
+
+        <div id="mortgageOptions" style="display:none">
+          <div class="form-row">
+            <label id="lblMort">Ипотека — выберите:</label>
+            <select id="mortgageType">
+              <option value="primary">Первичное жильё</option>
+              <option value="secondary">Вторичное жильё</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label id="lblDeposit">Первоначальный взнос (₸)</label>
+            <input id="deposit" type="number" value="0">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label id="lblAmount">Желаемая сумма (₸)</label>
+          <input id="amount" type="number" value="5000000">
+        </div>
+        <div class="form-row">
+          <label id="lblIncome">Официальный доход в мес. (₸)</label>
+          <input id="income" type="number" value="200000">
+        </div>
+        <div class="form-row">
+          <label id="lblPayments">Ежемесячные текущие платежи (₸)</label>
+          <input id="payments" type="number" value="0">
+        </div>
+        <div class="form-row">
+          <label id="lblCurrentLate">Есть активные просрочки?</label>
+          <select id="currentLate"><option value="no">Нет</option><option value="yes">Да</option></select>
+        </div>
+        <div class="form-row">
+          <label id="lblPastLate">Были просрочки ранее?</label>
+          <select id="pastLate"><option value="no">Нет</option><option value="minor">Мелкие до 30 дней</option><option value="major">Серьёзные (30+)</option></select>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button class="btn" onclick="calculate()">Рассчитать</button>
+          <button class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)" onclick="resetForm()">Сбросить</button>
+        </div>
+      </div>
+
+      <div>
+        <div id="result" class="result-box" style="display:none">
+          <div class="percent" id="percent">0%</div>
+          <p id="resultText" style="color:var(--muted)"></p>
+          <div style="display:flex;gap:8px;justify-content:center;margin-top:8px">
+            <a id="whatsBtn" class="btn" href="#" target="_blank">Отправить заявку в WhatsApp</a>
+          </div>
+        </div>
+        <div id="explain" class="note">Формула: учитываем доход, долговую нагрузку, просрочки, тип услуги и первоначальный взнос (для ипотеки).</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:14px;color:var(--muted);font-size:13px">
+    Если хотите — <a href="agent.html" style="color:var(--gold)">заявка агента</a> для подключения в сеть.
+  </div>
+  <div style="margin-top:8px;color:var(--muted)">© Sunkar Finance — WhatsApp: <a href="https://wa.me/77052606667" style="color:var(--gold)">+7 705 260 6667</a></div>
+</div>
+
+<script>
+/* show mortgage options when selected */
+const serviceType = document.getElementById('serviceType');
+serviceType.onchange = ()=> {
+  if(serviceType.value === 'mortgage') document.getElementById('mortgageOptions').style.display = 'block';
+  else document.getElementById('mortgageOptions').style.display = 'none';
+};
+
+/* calculation (same model but more robust) */
+function calculate(){
+  const service = document.getElementById('serviceType').value;
+  const amount = Number(document.getElementById('amount').value) || 0;
+  const income = Number(document.getElementById('income').value) || 0;
+  const payments = Number(document.getElementById('payments').value) || 0;
+  const currentLate = document.getElementById('currentLate').value;
+  const pastLate = document.getElementById('pastLate').value;
+  const mortgageType = document.getElementById('mortgageType') ? document.getElementById('mortgageType').value : 'primary';
+  const deposit = Number(document.getElementById('deposit').value) || 0;
+
+  let score = 50;
+  let years = 5;
+  if(service === 'mortgage') years = 20;
+  if(service === 'auto') years = 5;
+  if(service === 'business') years = 3;
+  if(service === 'refinance') years = 5;
+  const monthlyEstimate = (amount / (years*12)) * 1.02;
+
+  if(income <= 0){ score -= 25; } else {
+    const ratio = monthlyEstimate / income;
+    if(ratio < 0.2) score += 18;
+    else if(ratio < 0.35) score += 8;
+    else if(ratio < 0.5) score += 0;
+    else score -= 10 + Math.min(20, (ratio-0.5)*60);
+  }
+
+  if(income > 0){
+    const debtLoad = payments / income;
+    if(debtLoad < 0.2) score += 8;
+    else if(debtLoad < 0.35) score += 0;
+    else score -= Math.round((debtLoad-0.35)*100);
+  }
+
+  const serviceWeights = {
+    'unsecured_no_income': -8,
+    'unsecured_with_income': 4,
+    'secured': 6,
+    'mortgage': 2,
+    'business': -2,
+    'auto': 2,
+    'refinance': 6,
+    '': 0
+  };
+  score += (serviceWeights[service] || 0);
+
+  if(currentLate === 'yes'){ score -= 28; }
+  if(pastLate === 'minor'){ score -= 8; }
+  if(pastLate === 'major'){ score -= 18; }
+
+  if(service === 'mortgage'){
+    const depRatio = deposit / Math.max(1, amount);
+    if(depRatio >= 0.2) score += 10;
+    else if(depRatio >= 0.1) score += 4;
+    else score -= 4;
+    if(mortgageType === 'primary') score += 4;
+  }
+
+  if(service === 'business' && amount > 50000000) score -= 6;
+  if(amount > income * 60) score -= 8;
+
+  let percent = Math.round(Math.max(3, Math.min(98, score)));
+  let msg = '';
+  if(percent >= 80) msg = 'Очень высокая вероятность одобрения. Рекомендуем отправить заявку — шансы отличные.';
+  else if(percent >= 60) msg = 'Хорошая вероятность. Возможны небольшие условия по сумме или срокам.';
+  else if(percent >= 40) msg = 'Средняя вероятность — потребуется дополнительный пакет документов или поручители.';
+  else msg = 'Низкая вероятность. Рекомендуем предварительно улучшить параметры (увеличить доход/первоначальный взнос или снизить сумму).';
+
+  document.getElementById('percent').innerText = percent + '%';
+  document.getElementById('resultText').innerText = msg;
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('explain').style.display = 'none';
+
+  /* prepare WhatsApp */
+  const fio = encodeURIComponent(document.getElementById('fio').value || 'Клиент');
+  const phone = encodeURIComponent(document.getElementById('phone').value || '');
+  const city = encodeURIComponent(document.getElementById('city').value || '');
+  const serviceLabel = encodeURIComponent((document.getElementById('serviceType').selectedOptions[0] || {text:''}).text);
+  const preText = `Заявка%20Sunkar%20Finance%0A%0AИмя:%20${fio}%0AТелефон:%20${phone}%0AГород:%20${city}%0AУслуга:%20${serviceLabel}%0AСумма:%20${amount}%20₸%0AВероятность:%20${percent}%25%0AКомментарий:%20`;
+  const waLink = `https://wa.me/77052606667?text=${preText}`;
+  document.getElementById('whatsBtn').href = waLink;
+}
+
+function resetForm(){
+  document.getElementById('fio').value='';
+  document.getElementById('phone').value='';
+  document.getElementById('city').value='Астана';
+  document.getElementById('serviceType').value='';
+  document.getElementById('amount').value=5000000;
+  document.getElementById('income').value=200000;
+  document.getElementById('payments').value=0;
+  document.getElementById('currentLate').value='no';
+  document.getElementById('pastLate').value='no';
+  document.getElementById('deposit').value=0;
+  document.getElementById('result').style.display='none';
+  document.getElementById('explain').style.display='block';
+}
+
+/* read ?service=... to preselect */
+const params = new URLSearchParams(window.location.search);
+const preService = params.get('service');
+if(preService) document.getElementById('serviceType').value = preService;
+</script>
+</body>
+</html>
