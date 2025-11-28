@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Стать агентом — Sunkar Finance</title>
+<meta name="description" content="Присоединяйтесь к агентской сети Sunkar Finance — заполните заявку и мы свяжемся с вами.">
+<style>
+:root{--bg:#07121B;--panel:#0b2630;--gold:#D4A24A;--muted:rgba(255,255,255,0.78)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui, -apple-system, Helvetica, Arial;background:linear-gradient(180deg,#041018,#07121B);color:#fff}
+.container{max-width:760px;margin:24px auto;padding:16px}
+.header{display:flex;align-items:center;gap:12px}
+.logo img{width:64px;height:64px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+.form-row{margin-bottom:12px}
+label{display:block;color:var(--muted);margin-bottom:6px}
+input[type=text],input[type=tel],select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--gold),#c38f3a);color:#07121B;font-weight:700;border:0;cursor:pointer}
+.note{color:var(--muted);font-size:13px;margin-top:10px}
+.footer{margin-top:18px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="logo"><img src="img/logo.png" alt="logo"></div>
+    <div>
+      <h2 id="pageTitle">Станьте агентом</h2>
+      <div id="pageSub" style="color:var(--muted)">Зарегистрируйтесь в агентской сети Sunkar Finance</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h3 id="formTitle">Форма заявки агента</h3>
+    <div class="form-row">
+      <label for="agName" id="lblName">ФИО *</label>
+      <input type="text" id="agName" placeholder="Иванов Иван" required>
+    </div>
+    <div class="form-row">
+      <label for="agCity" id="lblCity">Город *</label>
+      <input type="text" id="agCity" value="Астана" required>
+    </div>
+    <div class="form-row">
+      <label for="agPhone" id="lblPhone">Номер телефона *</label>
+      <input type="tel" id="agPhone" placeholder="+7 7xx xxx xx xx" required>
+    </div>
+    <div class="form-row">
+      <label for="agNote" id="lblNote">Комментарий (необязательно)</label>
+      <input type="text" id="agNote" placeholder="Коротко о себе">
+    </div>
+
+    <div style="display:flex;gap:10px;align-items:center">
+      <button class="btn" onclick="sendAgent()">Отправить заявку в WhatsApp</button>
+      <button class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)" onclick="resetForm()">Сбросить</button>
+    </div>
+
+    <div class="note" id="noteText">После отправки мы свяжемся с вами для подтверждения и даём доступ к материалам.</div>
+  </div>
+
+  <div class="footer">
+    © Sunkar Finance — WhatsApp: <a href="https://wa.me/77052606667" style="color:var(--gold)">+7 705 260 6667</a>
+  </div>
+</div>
+
+<script>
+const ru = {
+  pageTitle: 'Станьте агентом',
+  pageSub: 'Зарегистрируйтесь в агентской сети Sunkar Finance',
+  formTitle: 'Форма заявки агента',
+  lblName: 'ФИО *',
+  lblCity: 'Город *',
+  lblPhone: 'Номер телефона *',
+  lblNote: 'Комментарий (необязательно)',
+  noteText: 'После отправки мы свяжемся с вами для подтверждения и даём доступ к материалам.'
+};
+const kz = {
+  pageTitle: 'Агент болыңыз',
+  pageSub: 'Sunkar Finance агенттік желісіне тіркеліңіз',
+  formTitle: 'Агенттің өтініш формасы',
+  lblName: 'Тегі Аты (ФИО) *',
+  lblCity: 'Қала *',
+  lblPhone: 'Телефон нөмірі *',
+  lblNote: 'Ескерту (міндетті емес)',
+  noteText: 'Жібергеннен кейін біз сізбен байланысып, материалдарға қолжетімділік беретін боламыз.'
+};
+
+function setLangAgent(lang){
+  const t = lang === 'kz' ? kz : ru;
+  document.getElementById('pageTitle').innerText = t.pageTitle;
+  document.getElementById('pageSub').innerText = t.pageSub;
+  document.getElementById('formTitle').innerText = t.formTitle;
+  document.getElementById('lblName').innerText = t.lblName;
+  document.getElementById('lblCity').innerText = t.lblCity;
+  document.getElementById('lblPhone').innerText = t.lblPhone;
+  document.getElementById('lblNote').innerText = t.lblNote;
+  document.getElementById('noteText').innerText = t.noteText;
+}
+
+/* default RU; if ?lang=kz in URL then switch */
+const urlParams = new URLSearchParams(window.location.search);
+if(urlParams.get('lang') === 'kz') setLangAgent('kz'); else setLangAgent('ru');
+
+function sendAgent(){
+  const name = encodeURIComponent(document.getElementById('agName').value || 'Агент');
+  const city = encodeURIComponent(document.getElementById('agCity').value || '');
+  const phone = encodeURIComponent(document.getElementById('agPhone').value || '');
+  const note = encodeURIComponent(document.getElementById('agNote').value || '');
+  const text = `Заявка%20агента%20Sunkar%20Finance%0A%0AФИО:%20${name}%0AГород:%20${city}%0AТелефон:%20${phone}%0AКомментарий:%20${note}`;
+  const wa = `https://wa.me/77052606667?text=${text}`;
+  window.open(wa,'_blank');
+}
+function resetForm(){ document.getElementById('agName').value='';document.getElementById('agCity').value='Астана';document.getElementById('agPhone').value='';document.getElementById('agNote').value=''; }
+</script>
+</body>
+</html>
