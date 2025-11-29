@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Агенттік желі — Sunkar Finance</title>
+  <link rel="icon" href="img/logo-preview.png"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+  <header class="site-header small">
+    <div class="container header-inner">
+      <a href="kz.html" class="brand small">
+        <img src="img/logo.png" alt="Sunkar" class="logo" />
+        <div class="brand-text"><div class="brand-name">Sunkar Finance</div></div>
+      </a>
+      <nav class="top-actions"><a href="kz.html">Басты бет</a></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Біздің агенттік желіге қосылыңыз</h1>
+    <p>Клиенттерді тартып, әр мәміле үшін комиссия алып отырыңыз. Біз маркетингтік материалдар мен техникалық қолдау көрсетеміз.</p>
+
+    <div class="agent-steps">
+      <ol>
+        <li>Клиентті тіркеп, өтініш жібересіз.</li>
+        <li>Біз өтінішті тексереміз және өңдейміз.</li>
+        <li>Шешім оң болса — сіз комиссия аласыз.</li>
+      </ol>
+      <div class="example">
+        <strong>Төлем мысалы:</strong> 10 000 000 ₸ несиеден 1% = 100 000 ₸.
+      </div>
+    </div>
+
+    <form id="agent-form-kz" class="agent-form">
+      <label>Аты-жөні *</label>
+      <input type="text" id="agent-name" required />
+
+      <label>Телефон *</label>
+      <input type="tel" id="agent-phone" required />
+
+      <label>Қала</label>
+      <input type="text" id="agent-city" value="Астана" />
+
+      <label>Тәжірибе (жыл)</label>
+      <input type="number" id="agent-experience" min="0" value="0" />
+
+      <label>Ескертпе</label>
+      <textarea id="agent-note" rows="3"></textarea>
+
+      <button type="submit" class="btn btn-gold">Тіркелу</button>
+    </form>
+
+    <div id="agent-result" class="result hidden"></div>
+  </main>
+
+  <script src="js/agent-form.js"></script>
+</body>
+</html>
