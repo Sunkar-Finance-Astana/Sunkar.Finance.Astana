@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Узнайте вероятность одобрения — Sunkar Finance</title>
+  <meta property="og:title" content="Узнайте вероятность одобрения за 10 секунд">
+  <meta property="og:image" content="img/logo-preview.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a href="index.html" style="color:var(--gold);font-size:1.1rem">Главная</a>
+      <div class="lang-switch">
+        <a href="probability.html" class="active">RU</a>
+        <a href="probability-kz.html">KZ</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" style="padding:60px 20px>
+    <h2 style="text-align:center;font-size:2.8rem;color:var(--gold);margin-bottom:20px">
+      Узнайте вероятность одобрения
+    </h2>
+    <p style="text-align:center;font-size:1.4rem;margin-bottom:50px">
+      Заполните форму — получите точный рейтинг (0–100%) за 10 секунд
+    </p>
+
+    <div style="max-width:560px;margin:0 auto">
+      <form id="calcForm" style="display:grid;gap:20px">
+        <input type="text" placeholder="ФИО *" required>
+        <input type="tel" placeholder="Телефон +7 7xx xxx xx xx *" required>
+        <input type="text" placeholder="Город (например: Астана)" value="Астана" required>
+
+        <select required style="padding:18px;border-radius:12px;font-size:1.1rem">
+          <option value="" disabled selected>Вид услуги *</option>
+          <option value="unsecured10">Кредит без залога (до 10 млн)</option>
+          <option value="unsecured20">Кредит без залога (до 20 млн)</option>
+          <option value="secured">Кредит под залог</option>
+          <option value="mortgage">Ипотека</option>
+          <option value="business">Кредит для ИП/ТОО</option>
+          <option value="auto">Автокредит</option>
+          <option value="refinance">Рефинансирование</option>
+        </select>
+
+        <input type="number" placeholder="Желаемая сумма (₸)" value="5000000" min="100000">
+        <input type="number" placeholder="Официальный доход (₸/мес)" value="200000">
+        <input type="number" placeholder="Ежемесячные платежи по кредитам (₸)" value="0">
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
+          <select><option>Действующие просрочки</option><option>Нет</option><option>до 30 дн</option><option>30+ дн</option></select>
+          <select><option>Были просрочки раньше</option><option>Нет</option><option>до 90 дн</option><option>90+ дн</option></select>
+        </div>
+
+        <select><option>Налоговая/ломбардная задолженность</option><option>Нет</option><option>Есть</option></select>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px">
+          <button type="button" id="calcBtn" class="btn btn-primary large">Рассчитать вероятность</button>
+          <button type="reset" class="btn" style="background:#333;color:#fff">Сброс</button>
+        </div>
+      </form>
+
+      <div id="result" style="display:none;margin-top:50px;text-align:center">
+        <div style="font-size:5rem;font-weight:800;color:var(--gold)" id="percent">87%</div>
+        <p style="font-size:1.6rem;margin:20px 0" id="text">Высокая вероятность одобрения!</p>
+        <a href="#" id="whatsappLink" class="btn btn-gold large">Отправить заявку в WhatsApp</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/probability.js"></script>
+</body>
+</html>
