@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Агент болыңыз — Sunkar Finance</title>
+  <meta property="og:title" content="Агент болыңыз — Sunkar Finance">
+  <meta property="og:image" content="img/logo-preview.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header small">
+    <div class="wrap">
+      <div class="brand">
+        <img src="img/logo.png" alt="Sunkar Finance" class="logo small">
+        <div class="brand-text">
+          <h1>Sunkar Finance</h1>
+          <p class="tagline">Агент болыңыз және 1%-дан табыс табыңыз</p>
+        </div>
+      </div>
+      <nav class="top-nav">
+        <a href="kz.html" class="nav-link">Басты</a>
+        <a href="probability-kz.html" class="nav-link">Ықтималдық</a>
+        <a href="agents-kz.html" class="nav-link active">Агенттер</a>
+        <a href="agents.html" class="nav-link lang-switch">Рус</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="agent-info">
+      <h2>Агент болыңыз</h2>
+      <p>Клиенттер жіберіңіз — несие сомасының 1%-ына дейін табыс табыңыз. Мысал: 10 000 000 ₸ — 100 000 ₸ комиссия.</p>
+    </section>
+
+    <section class="agent-form">
+      <h3>Қосылу үшін өтініш</h3>
+      <form id="agentFormKZ" onsubmit="return false;">
+        <div class="row">
+          <label>Тегі, Аты *</label>
+          <input type="text" id="agentName_kz" required>
+        </div>
+        <div class="row two-cols">
+          <div>
+            <label>Қала *</label>
+            <input type="text" id="agentCity_kz" required>
+          </div>
+          <div>
+            <label>Телефон *</label>
+            <input type="tel" id="agentPhone_kz" placeholder="+7 7xx xxx xx xx" required>
+          </div>
+        </div>
+        <div class="row actions">
+          <button class="btn btn-primary" id="agentSubmitKZ">Мен агент болғым келеді</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <div>© Sunkar Finance — Астана, Абай 18 — WhatsApp: <a href="https://wa.me/77052606667">+7 705 260 66 67</a></div>
+  </footer>
+
+  <script src="js/agent-form.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
