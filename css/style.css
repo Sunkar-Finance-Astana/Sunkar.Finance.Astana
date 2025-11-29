@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --bg: #0a1b2d;
+  --dark: #0f2439;
+  --gold: #d4af37;
+  --lightgold: #f0d4a0;
+  --text: #e8e8e8;
+  --accent: #1e90ff;
+}
+* {margin:0; padding:0; box-sizing:border-box}
+body {background:var(--bg); color:var(--text); font-family:'Montserrat',sans-serif; line-height:1.6; min-height:100vh}
+.wrap {max-width:1280px; margin:0 auto; padding:0 20px}
+
+header {background:rgba(10,27,45,0.95); backdrop-filter:blur(12px); position:sticky; top:0; z-index:100; padding:16px 0}
+header .wrap {display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px}
+.logo {height:60px}
+.tagline {font-size:0.95rem; color:var(--gold)}
+
+.lang-switch a {
+  background:var(--dark); color:#fff; padding:10px 20px; border-radius:30px; text-decoration:none; font-weight:600; margin:0 5px;
+}
+.lang-switch a.active {background:var(--gold); color:#000}
+
+.btn {
+  display:inline-block; padding:14px 32px; border-radius:30px; font-weight:700; text-decoration:none; transition:0.3s; font-size:1.1rem;
+}
+.btn-primary {background:var(--accent); color:#fff}
+.btn-gold {background:var(--gold); color:#000}
+.btn.large {padding:18px 40px; font-size:1.2rem}
+
+/* Герой */
+.hero {display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; padding:90px 0; background:linear-gradient(135deg,#0f2439,#0a1b2d)}
+.hero h2 {font-size:3rem; margin-bottom:20px}
+.hero .gold {color:var(--gold)}
+.logo-glow {position:relative; text-align:center}
+.logo-glow::before {content:""; position:absolute; width:380px; height:380px; background:radial-gradient(circle,rgba(212,162,74,0.25),transparent 70%); border-radius:50%; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%)}
+.logo-glow img {max-width:420px; filter:drop-shadow(0 0 40px rgba(212,162,74,0.5))}
+
+/* Услуги */
+.services-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:30px; margin:80px 0}
+.service-card {background:var(--dark); padding:35px; border-radius:20px; transition:0.3s}
+.service-card:hover {transform:translateY(-12px); box-shadow:0 25px 50px rgba(212,162,74,0.15)}
+.service-card h4 {color:var(--gold); margin-bottom:15px; font-size:1.4rem}
+
+/* Партнёры и соцсети */
+.partners-row, .social-icons {display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin:50px 0}
+.partners-row img, .social-icons img {height:80px; object-fit:contain; transition:0.3s}
+.partners-row img:hover, .social-icons img:hover {transform:scale(1.15)}
+
+/* Карта */
+.map h3 {text-align:center; margin-bottom:30px; color:var(--gold); font-size:1.8rem}
+.map img {width:100%; border-radius:20px; box-shadow:0 15px 40px rgba(0,0,0,0.6)}
+
+/* Футер */
+footer {background:#000; padding:30px 0; text-align:center; font-size:0.95rem}
+footer a {color:var(--gold)}
+
+/* Адаптив */
+@media (max-width:868px){
+  .hero {grid-template-columns:1fr; text-align:center}
+  .hero .logo-glow {margin-top:40px}
+  header .wrap {flex-direction:column}
+}
