@@ -1,7 +1,0 @@
-/* Доп. стили для калькулятора и модалки */
-.calc-intro{margin-top:8px}
-.calc-panel{display:flex;gap:20px;align-items:flex-start}
-.calc-form{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-.result-card{min-width:280px}
-.actions{display:flex;gap:10px;margin-top:10px;align-items:center}
-.actions .btn{padding:10px 14px}
