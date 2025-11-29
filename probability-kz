@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ықтималдықты біліңіз — Sunkar Finance</title>
+  <meta property="og:image" content="img/logo-preview.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a href="kz.html" style="color:var(--gold);font-size:1.1rem">Басты бет</a>
+      <div class="lang-switch">
+        <a href="probability.html">RU</a>
+        <a href="probability-kz.html" class="active">KZ</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" style="padding:60px 20px">
+    <h2 style="text-align:center;font-size:2.8rem;color:var(--gold);margin-bottom:20px">
+      Бекіту ықтималдығын біліңіз
+    </h2>
+    <p style="text-align:center;font-size:1.4rem;margin-bottom:50px">
+      Форманы толтырыңыз — 10 секундта нақты рейтинг (0–100%) алыңыз
+    </p>
+
+    <div style="max-width:560px;margin:0 auto">
+      <form id="calcForm" style="display:grid;gap:20px">
+        <input type="text" placeholder="Аты-жөніңіз *" required>
+        <input type="tel" placeholder="Телефон +7 7xx xxx xx xx *" required>
+        <input type="text" placeholder="Қалаңыз (мысалы: Астана)" value="Астана" required>
+
+        <select required style="padding:18px;border-radius:12px;font-size:1.1rem">
+          <option value="" disabled selected>Қызмет түрі *</option>
+          <option>Кепілсіз несие (10 млн дейін)</option>
+          <option>Кепілсіз несие (20 млн дейін)</option>
+          <option>Кепілмен несие</option>
+          <option>Ипотека</option>
+          <option>ИП/ТОО несиесі</option>
+          <option>Автонесие</option>
+          <option>Қайта қаржыландыру</option>
+        </select>
+
+        <input type="number" placeholder="Қажет сома (₸)" value="5000000">
+        <input type="number" placeholder="Ресми табыс (₸/ай)" value="200000">
+        <input type="number" placeholder="Ай сайынғы төлемдер (₸)" value="0">
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:gap:15px">
+          <select><option>Ағымдағы кешігулер</option><option>Жоқ</option><option>30 күнге дейін</option><option>30+ күн</option></select>
+          <select><option>Бұрын кешігу болған ба</option><option>Жоқ</option><option>90 күнге дейін</option><option>90+ күн</option></select>
+        </div>
+
+        <select><option>Салық/ломбард қарызы</option><option>Жоқ</option><option>Иә</option></select>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px">
+          <button type="button" id="calcBtn" class="btn btn-primary large">Есептеу</button>
+          <button type="reset" class="btn" style="background:#333;color:#fff">Тазалау</button>
+        </div>
+      </form>
+
+      <div id="result" style="display:none;margin-top:50px;text-align:center">
+        <div style="font-size:5rem;font-weight:800;color:var(--gold)" id="percent">87%</div>
+        <p style="font-size:1.6rem;margin:20px 0" id="text">Жоғары ықтималдық!</p>
+        <a href="#" id="whatsappLink" class="btn btn-gold large">WhatsApp-қа өтініш жіберу</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/probability.js"></script>
+</body>
+</html>
