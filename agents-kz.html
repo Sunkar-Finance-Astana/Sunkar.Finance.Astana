@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Агент болыңыз — Sunkar Finance</title>
+  <meta property="og:image" content="img/logo-preview.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a href="kz.html" style="color:var(--gold)">Басты бет</a>
+      <div class="lang-switch">
+        <a href="agents.html">RU</a>
+        <a href="agents-kz.html" class="active">KZ</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" style="padding:80px 20px;text-align:center">
+    <h2 style="font-size:3rem;color:var(--gold);margin-bottom:20px">
+      Біздің агент болыңыз
+    </h2>
+    <p style="font-size:1.6rem;max-width:700px;margin:0 auto 50px">
+      Клиенттерді әкеліңіз — <b>мәміле сомасының 1–2%</b> алыңыз<br>
+      Айына 2 рет төлем · табыс шектеусіз
+    </p>
+
+    <div style="max-width:500px;margin:0 auto;display:grid;gap:22px">
+      <input type="text" placeholder="Аты-жөніңіз *" required style="padding:20px;border-radius:16px;border:none;font-size:1.2rem">
+      <input type="tel" placeholder="Телефон +7 ___ ___ __ __ *" required style="padding:20px;border-radius:16px;border:none;font-size:1.2rem">
+      <input type="text" placeholder="Қалаңыз (мысалы: Алматы)" style="padding:20px;border-radius:16px;border:none;font-size:1.2rem">
+
+      <button id="agentBtn" class="btn btn-gold large" style="padding:22px;font-size:1.4rem">
+        Өтініш жіберу → WhatsApp
+      </button>
+    </div>
+
+    <p style="margin-top:40px;color:#aaa;font-size:1.1rem">
+      Біз 5 минут ішінде хабарласамыз
+    </p>
+  </main>
+
+  <script>
+    document.getElementById('agentBtn').onclick = () => {
+      const fio = document.querySelectorAll('input[type=text]')[0].value.trim();
+      const phone = document.querySelector('input[type=tel]').value.trim();
+      const city = document.querySelectorAll('input[type=text]')[1].value.trim() || '—';
+      const text = encodeURIComponent(`Мен Sunkar Finance агенті болғым келеді!\nАты-жөнім: \( {fio}\nТелефон: \){phone}\nҚала: \( {city}\nУақыт: \){new Date().toLocaleString('kk-KZ')}`);
+      location.href = `https://wa.me/77052606667?text=${text}`;
+    };
+  </script>
+</body>
+</html>
