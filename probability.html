@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Узнайте вероятность одобрения — Sunkar Finance</title>
+  <meta property="og:title" content="Узнайте вероятность одобрения — Sunkar Finance">
+  <meta property="og:image" content="img/logo-preview.png">
+  <link rel="icon" href="img/logo-preview.png" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/calc.css">
+</head>
+<body>
+  <header class="header small">
+    <div class="wrap">
+      <a href="index.html" class="back-link">← Главная</a>
+      <div class="lang-switch">
+        <a href="probability.html" class="lang-btn active">RU</a>
+        <a href="probability-kz.html" class="lang-btn">KZ</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap calc-main">
+    <section class="calc-intro">
+      <h2>Узнайте вероятность одобрения</h2>
+      <p>Заполните форму — получите рейтинг (0–100%) за секунду. Для ипотеки — отдельный расчёт.</p>
+    </section>
+
+    <section class="calc-panel">
+      <form id="probForm" class="calc-form" onsubmit="return false;">
+        <div class="row">
+          <label>ФИО *</label>
+          <input type="text" id="fio" required>
+        </div>
+        <div class="row two-cols">
+          <div>
+            <label>Телефон *</label>
+            <input type="tel" id="phone" placeholder="+7 7xx xxx xx xx" required>
+          </div>
+          <div>
+            <label>Город *</label>
+            <input type="text" id="city" value="Астана" required>
+          </div>
+        </div>
+        <div class="row">
+          <label>Вид услуги *</label>
+          <select id="service" required>
+            <option value="">Выберите</option>
+            <option value="unsecured_no_income">Несие без залога (до 10 млн)</option>
+            <option value="unsecured_with_income">Несие без залога (до 20 млн)</option>
+            <option value="secured">Несие под залог (недвижимость/авто)</option>
+            <option value="mortgage">Ипотека</option>
+            <option value="business">Несие для ИП/ТОО</option>
+            <option value="auto">Автонесие</option>
+            <option value="refinance">Рефинансирование</option>
+          </select>
+        </div>
+        <div id="mortgageBlock" style="display:none;">
+          <div class="row">
+            <label>Ипотека — первичное или вторичное</label>
+            <select id="mortgageType">
+              <option value="primary">Первичное</option>
+              <option value="secondary">Вторичное</option>
+            </select>
+          </div>
+          <div class="row">
+            <label>Первоначальный взнос (₸)</label>
+            <input type="number" id="deposit" value="0">
+          </div>
+        </div>
+        <div class="row">
+          <label>Желаемая сумма (₸)</label>
+          <input type="number" id="amount" value="5000000">
+        </div>
+        <div class="row two-cols">
+          <div>
+            <label>Официальный доход (₸/мес)</label>
+            <input type="number" id="income" value="200000">
+          </div>
+          <div>
+            <label>Сумма ежемесячных платежей (₸)</label>
+            <input type="number" id="payments" value="0">
+          </div>
+        </div>
+        <div class="row two-cols">
+          <div>
+            <label>Действующие просрочки</label>
+            <select id="currentLate">
+              <option value="no">Нет</option>
+              <option value="closed">Закрыта недавно</option>
+              <option value="30">До 30 дней</option>
+              <option value="90">Более 30 дней</option>
+            </select>
+          </div>
+          <div>
+            <label>Были просрочки ранее</label>
+            <select id="pastLate">
+              <option value="no">Нет</option>
+              <option value="90">До 90 дней</option>
+              <option value="more">Более 90 дней</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <label>Наличие налоговой/ломбардной задолженности</label>
+          <select id="taxDebt">
+            <option value="no">Нет</option>
+            <option value="yes">Да</option>
+          </select>
+        </div>
+        <div class="row actions">
+          <button class="btn btn-primary" id="calcBtn">Рассчитать вероятность</button>
+          <button class="btn btn-outline" id="resetBtn" type="button">Сброс</button>
+        </div>
+      </form>
+
+      <div id="resultCard" class="result-card" style="display:none;">
+        <div class="result-percent" id="resultPercent">0%</div>
+        <div class="result-text" id="resultText"></div>
+        <a id="toWhatsBtn" class="btn btn-primary" target="_blank">Отправить заявку в WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <div>© Sunkar Finance — Астана, Абая 18 — WhatsApp: <a href="https://wa.me/77052606667" class="gold-link">+7 705 260 66 67</a></div>
+  </footer>
+
+  <script src="js/probability.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
