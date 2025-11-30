@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Бекіту ықтималдығы — Sunkar Finance</title>
+  <meta name="description" content="Несиенің бекіту ықтималдығын 2 минутта біліңіз. Сіздің деректеріңіз бойынша нақты есептеу.">
+  <meta property="og:title" content="Бекіту ықтималдығын есептегіш — Sunkar Finance">
+  <meta property="og:description" content="Несиенің бекіту ықтималдығын желіде есептеңіз">
+  <meta property="og:image" content="img/logo-preview.png">
+  <link rel="icon" href="img/logo-preview.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/calc.css">
+</head>
+<body>
+  <header class="header">
+    <div class="wrap">
+      <div class="logo-block">
+        <img src="img/logo.png" alt="Sunkar Finance" class="logo">
+        <div class="logo-text">
+          <h1>Sunkar Finance</h1>
+          <p>Бекіту ықтималдығы</p>
+        </div>
+      </div>
+      <nav>
+        <a href="kz.html" class="btn-gold">Басты бетке</a>
+        <a href="probability.html" class="lang">Рус</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="calc-intro">
+      <h2>Бекіту ықтималдығын біліңіз</h2>
+      <p>Форманы толтырыңыз — жүйе сіздің өтініміңіздің бекіту ықтималдығын есептейді</p>
+    </section>
+
+    <section class="calc-panel">
+      <form id="probFormKZ" class="calc-form">
+        <div class="form-row">
+          <label for="fio_kz">Аты-жөні *</label>
+          <input type="text" id="fio_kz" required>
+        </div>
+
+        <div class="form-row two-cols">
+          <div>
+            <label for="phone_kz">Телефон *</label>
+            <input type="tel" id="phone_kz" placeholder="+7 7xx xxx xx xx" required>
+          </div>
+          <div>
+            <label for="city_kz">Қала *</label>
+            <input type="text" id="city_kz" value="Астана" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="service_kz">Несие түрі *</label>
+          <select id="service_kz" required>
+            <option value="">Таңдаңыз</option>
+            <option value="unsecured_no_income">Кепілсіз несие (10 млн дейін)</option>
+            <option value="unsecured_with_income">Кепілсіз несие (20 млн дейін)</option>
+            <option value="secured">Кепілмен несие (қозғалмайтын мүлік/авто)</option>
+            <option value="mortgage">Ипотека</option>
+            <option value="business">ЖШС/ЖК несиелері</option>
+            <option value="auto">Автонесие</option>
+            <option value="refinance">Қайта қаржыландыру</option>
+          </select>
+        </div>
+
+        <div id="mortgageBlockKZ" class="mortgage-block" style="display:none;">
+          <div class="form-row">
+            <label for="mortgageType_kz">Ипотека түрі</label>
+            <select id="mortgageType_kz">
+              <option value="primary">Бастапқы тұрғын үй</option>
+              <option value="secondary">Екіншілік тұрғын үй</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="deposit_kz">Алғашқы жарна (₸)</label>
+            <input type="number" id="deposit_kz" value="0">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="amount_kz">Қажет сома (₸)</label>
+          <input type="number" id="amount_kz" value="5000000" required>
+        </div>
+
+        <div class="form-row two-cols">
+          <div>
+            <label for="income_kz">Ресми табыс (₸/ай)</label>
+            <input type="number" id="income_kz" value="200000">
+          </div>
+          <div>
+            <label for="payments_kz">Ай сайынғы төлемдер сомасы (₸)</label>
+            <input type="number" id="payments_kz" value="0">
+          </div>
+        </div>
+
+        <div class="form-row two-cols">
+          <div>
+            <label for="currentLate_kz">Ағымдағы кешігулер</label>
+            <select id="currentLate_kz">
+              <option value="no">Жоқ</option>
+              <option value="closed">Жуықтап жабылған</option>
+              <option value="30">30 күнге дейін</option>
+              <option value="90">30 күннен астам</option>
+            </select>
+          </div>
+          <div>
+            <label for="pastLate_kz">Бұрын кешігулер болды ма</label>
+            <select id="pastLate_kz">
+              <option value="no">Жоқ</option>
+              <option value="90">90 күнге дейін</option>
+              <option value="more">90 күннен астам</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="taxDebt_kz">Салық/ломбардтық қарыз бар ма</label>
+          <select id="taxDebt_kz">
+            <option value="no">Жоқ</option>
+            <option value="yes">Иә</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="calcBtnKZ" class="btn btn-primary">Ықтималдықты есептеу</button>
+          <button type="button" id="resetBtnKZ" class="btn btn-outline">Қалпына келтіру</button>
+        </div>
+      </form>
+
+      <div id="resultCardKZ" class="result-card" style="display:none;">
+        <div class="result-percent" id="resultPercentKZ">0%</div>
+        <div class="result-text" id="resultTextKZ"></div>
+        <a id="toWhatsBtnKZ" class="btn btn-primary" target="_blank">Менеджерге өтініш жіберу (WhatsApp)</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>© 2024 Sunkar Finance | Астана, Абай көш. 18 | WhatsApp: <a href="https://wa.me/77052606667">+7 705 260 66 67</a></p>
+    </div>
+  </footer>
+
+  <script src="js/probability.js"></script>
+</body>
+</html>
